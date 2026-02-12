@@ -1,0 +1,44 @@
+# Parameter file to run training of the Denosing Auto-encoder
+
+##########################################################################################
+# Directories and pathnames
+##########################################################################################
+signal_pathname = /path/to/signal/
+noise_pathname = /path/to/noise/
+filename = name_of_model
+
+##########################################################################################
+# Parameters for the files containing signal and noise
+##########################################################################################
+num_per_file = 512                  # Number of traces in each .npz file
+num_signals = All                   # Number of signals to use
+
+##########################################################################################
+# Time parameters of the time series
+##########################################################################################
+ts_length = 3001                    # Length of time series in samples
+dt = 0.2                            # Sampling rate of input time series in s
+
+##########################################################################################
+# Parameters for STFT
+##########################################################################################
+nfft = 396                          # Number of points per fft for STFT
+nperseg = 99                        # Number of points per segement for STFT
+
+##########################################################################################
+# Parameters to set up Convolution Neural Network (CNN)
+##########################################################################################
+depth = 6                           # Depth of CNN. Default is 6
+filter_root = 8                     # Size of first filter. Default is 8.
+strides = 2, 2                      # Size of strides for Conv2D-Layer. Default is 2, 2
+drop_rate = 0.1                     # Drop rate for CNN Layers. Default is 0.1
+
+##########################################################################################
+# Parameters for training
+##########################################################################################
+validation_split = 0.2              # Validation split of signals. [0-1] -> recommend: 0.2
+epochs = 200                        # Number of epochs
+learning_rate = 0.000001            # Learning rate for adam optimizer
+batch_size = 32                     # Batch size
+patience = 10                       # Patience for early stopping callback
+verbose = 2                         # Verbosity for training [1-3]
